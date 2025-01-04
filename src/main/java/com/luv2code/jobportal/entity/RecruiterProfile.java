@@ -21,13 +21,13 @@ public class RecruiterProfile {
     private String country;
     private String company;
     @Column(nullable = true, length=64)
-    private String profilePhotos;
+    private String profilePhoto;
 
     public RecruiterProfile(){
 
     }
 
-    public RecruiterProfile(int userAccountId, Users userId, String firstName, String lastName, String city, String state, String country, String company, String profilePhotos) {
+    public RecruiterProfile(int userAccountId, Users userId, String firstName, String lastName, String city, String state, String country, String company, String profilePhoto) {
         this.userAccountId = userAccountId;
         this.userId = userId;
         this.firstName = firstName;
@@ -36,7 +36,7 @@ public class RecruiterProfile {
         this.state = state;
         this.country = country;
         this.company = company;
-        this.profilePhotos = profilePhotos;
+        this.profilePhoto = profilePhoto;
     }
 
     public RecruiterProfile(Users users) {
@@ -107,12 +107,18 @@ public class RecruiterProfile {
         this.company = company;
     }
 
-    public String getProfilePhotos() {
-        return profilePhotos;
+    public String getProfilePhoto() {
+        return profilePhoto;
     }
 
-    public void setProfilePhotos(String profilePhotos) {
-        this.profilePhotos = profilePhotos;
+    public void setProfilePhoto(String profilePhotos) {
+        this.profilePhoto = profilePhotos;
+    }
+
+    @Transient
+    public String getPhotosImagePath(){
+        if(profilePhoto==null) return null;
+        return "/photos/recruiter/"+userAccountId+"/"+profilePhoto;
     }
 
     @Override
@@ -126,7 +132,7 @@ public class RecruiterProfile {
                 ", state='" + state + '\'' +
                 ", country='" + country + '\'' +
                 ", company='" + company + '\'' +
-                ", profilePhotos='" + profilePhotos + '\'' +
+                ", profilePhotos='" + profilePhoto + '\'' +
                 '}';
     }
 }
