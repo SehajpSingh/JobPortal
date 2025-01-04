@@ -13,4 +13,4 @@ public class JobportalApplication {
 }
 
 //recruiter user: test12@test.com , pass: 12as
-//job seeker user: random12@test.com, pass: 12df
+//job seeker user: random12dfd@test.com, pass: 12dfdsf
